@@ -1,7 +1,6 @@
 package entity;
 
 public class Doctor {
-
     private final String username;
     private final String password;
 
