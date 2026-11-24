@@ -3,6 +3,7 @@ package entity;
 import java.time.LocalDateTime;
 
 public class Appointment {
+    private final int appointmentID;
     private final String patientID;
     private final String patientName;
     private final Doctor doctor;
@@ -11,8 +12,10 @@ public class Appointment {
     private final String patientPhoneNumber;
     private final String visitReason;
 
-    public Appointment(String patientID, String patientName, Doctor doctor, LocalDateTime startTime,
-                       LocalDateTime endTime, String patientPhoneNumber, String visitReason){
+    public Appointment(int appointmentID, String patientID, String patientName, Doctor doctor,
+                       LocalDateTime startTime, LocalDateTime endTime, String patientPhoneNumber,
+                       String visitReason){
+        this.appointmentID = appointmentID;
         this.patientID = patientID;
         this.patientName = patientName;
         this.doctor = doctor;
@@ -20,6 +23,10 @@ public class Appointment {
         this.endTime = endTime;
         this.patientPhoneNumber = patientPhoneNumber;
         this.visitReason = visitReason;
+    }
+
+    public int getAppointmentID() {
+        return appointmentID;
     }
 
     public String getPatientID() {
