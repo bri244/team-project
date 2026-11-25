@@ -5,12 +5,14 @@ import views.LoginView;
 import javax.swing.*;
 
 public class AppBuilder {
-    private final JPanel mainPanel;
+    private final JPanel mainPanel = new JPanel();
+
+    private final BoxLayout boxLayout = new BoxLayout(mainPanel, BoxLayout.Y_AXIS);
 
     private LoginView loginView;
 
     public AppBuilder() {
-        this.mainPanel = new JPanel();
+        mainPanel.setLayout(boxLayout);
     }
 
     public AppBuilder addLoginView() {
@@ -22,6 +24,8 @@ public class AppBuilder {
     public JFrame build() {
         JFrame application = new JFrame();
 
+        application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        application.setMinimumSize(new java.awt.Dimension(600, 400));
         application.add(mainPanel);
 
         return application;
