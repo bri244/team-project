@@ -3,16 +3,17 @@ package app;
 import views.LoginView;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class AppBuilder {
     private final JPanel mainPanel = new JPanel();
 
-    private final BoxLayout boxLayout = new BoxLayout(mainPanel, BoxLayout.Y_AXIS);
+    private final CardLayout cardLayout = new CardLayout();
 
     private LoginView loginView;
 
     public AppBuilder() {
-        mainPanel.setLayout(boxLayout);
+        mainPanel.setLayout(cardLayout);
     }
 
     public AppBuilder addLoginView() {
@@ -26,6 +27,7 @@ public class AppBuilder {
 
         application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         application.setMinimumSize(new java.awt.Dimension(600, 400));
+
         application.add(mainPanel);
 
         return application;
