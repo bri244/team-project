@@ -3,12 +3,13 @@ package views;
 import interface_adapter.login.LoginViewModel;
 import interface_adapter.login.LoginState;
 import interface_adapter.login.LoginController;
+import interface_adapter.login.LoginViewModelListener;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LoginView extends JPanel {
+public class LoginView extends JPanel implements LoginViewModelListener {
     private final LoginViewModel loginViewModel;
 
     private final JTextField usernameField = new JTextField(15);
@@ -16,10 +17,11 @@ public class LoginView extends JPanel {
 
     private final JButton login = new JButton("Log In");
 
-    private final LoginController loginController = null;
+    private LoginController loginController = null;
 
     public LoginView(LoginViewModel loginViewModel) {
         this.loginViewModel = loginViewModel;
+        this.loginViewModel.addListener(this);
 
         JPanel usernamePanel = new JPanel();
         JPanel passwordPanel = new JPanel();
@@ -41,13 +43,6 @@ public class LoginView extends JPanel {
         buttonPanel.add(login);
         buttonPanel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
 
-        login.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                LoginState state = loginViewModel.getState();
-            }
-        });
-
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         this.add(Box.createVerticalStrut(100));
@@ -57,5 +52,33 @@ public class LoginView extends JPanel {
         this.add(Box.createVerticalStrut(20));
         this.add(buttonPanel);
 
+        login.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                final LoginState state = loginViewModel.getState();
+
+                state.setUsername(usernameField.getText());
+                state.setPassword(passwordField.getText());
+
+                loginViewModel.setState(state);
+
+                loginController.execute(state.getUsername(), state.getPassword());
+            }
+        });
+
     }
+
+    public void setLoginController(LoginController loginController) {
+        this.loginController = loginController;
+    }
+
+    private void setFields() {
+        usernameField.setText("");
+    }
+
+    @Override
+    public void stateChanged() {
+        setFields();
+    }
+
 }

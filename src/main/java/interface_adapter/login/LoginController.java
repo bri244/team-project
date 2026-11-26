@@ -7,7 +7,7 @@ public class LoginController {
     private final LoginInputBoundary loginUseCaseInteractor;
 
     public LoginController(LoginInputBoundary loginUseCaseInteractor) {
-        this.loginUseCaseInteractor =loginUseCaseInteractor;
+        this.loginUseCaseInteractor = loginUseCaseInteractor;
     }
 
     public void execute(String username, String password) {
