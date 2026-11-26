@@ -1,6 +1,7 @@
 package app;
 
 import views.LoginView;
+import interface_adapter.login.LoginViewModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,13 +12,15 @@ public class AppBuilder {
     private final CardLayout cardLayout = new CardLayout();
 
     private LoginView loginView;
+    private LoginViewModel loginViewModel;
 
     public AppBuilder() {
         mainPanel.setLayout(cardLayout);
     }
 
     public AppBuilder addLoginView() {
-        loginView = new LoginView();
+        loginViewModel = new LoginViewModel();
+        loginView = new LoginView(loginViewModel);
         mainPanel.add(loginView);
         return this;
     }
