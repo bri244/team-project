@@ -15,9 +15,4 @@ public interface ViewDoctorCalendarOutputBoundary {
      * @param errorMessage the explanation of the failure
      */
     void prepareFailView(String errorMessage);
-
-    /**
-     * Switches to the Calendar View.
-     */
-    void switchToDoctorCalendarView();
 }

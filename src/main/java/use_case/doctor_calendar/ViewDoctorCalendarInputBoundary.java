@@ -7,9 +7,4 @@ public interface ViewDoctorCalendarInputBoundary {
      * @param viewDoctorCalendarInputData the input data
      */
     void execute(ViewDoctorCalendarInputData viewDoctorCalendarInputData);
-
-    /**
-     * Executes the switch to DoctorCalendarView use case.
-     */
-    void switchToDoctorCalendarView();
 }
