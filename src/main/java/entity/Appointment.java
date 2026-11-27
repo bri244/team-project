@@ -6,13 +6,13 @@ public class Appointment {
     private final int appointmentID;
     private final String patientID;
     private final String patientName;
-    private final Doctor doctor;
+    private final User doctor;
     private final LocalDateTime startTime;
     private final LocalDateTime endTime;
     private final String patientPhoneNumber;
     private final String visitReason;
 
-    public Appointment(int appointmentID, String patientID, String patientName, Doctor doctor,
+    public Appointment(int appointmentID, String patientID, String patientName, User doctor,
                        LocalDateTime startTime, LocalDateTime endTime, String patientPhoneNumber,
                        String visitReason){
         this.appointmentID = appointmentID;
@@ -37,7 +37,7 @@ public class Appointment {
         return patientName;
     }
 
-    public Doctor getDoctor() {
+    public User getDoctor() {
         return doctor;
     }
 
